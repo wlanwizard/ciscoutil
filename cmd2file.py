@@ -41,7 +41,9 @@ for host in hosts:
 
     # Execute commands
     output = net_connect.send_command('term len 0')
-    output = net_connect.send_command('show run aaa')
+    output_1 = net_connect.send_command('show run aaa')
+    output_2 = net_connect.send_command('show ver')
+    output_final = output_1 + output_2
 
 
     # Print output to console screen
@@ -52,5 +54,5 @@ for host in hosts:
     #print()
 
     # Write output to file above
-    file.write(output)
+    file.write(output_final)
     file.close()
