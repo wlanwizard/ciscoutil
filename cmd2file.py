@@ -14,8 +14,10 @@ userName = input('Username: ')
 passWord = getpass.getpass()
 
 current_date_str = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-folder_name = current_date_str + "_output"
-os.makedirs(folder_name)  # Create a new directory with the folder name
+
+folder_name = "2023-09-12"
+if not os.path.exists(folder_name):
+    os.makedirs(folder_name)  # Create a new directory with the folder name
 
 # Loop to process hosts in hosts.txt file
 for host in hosts:
