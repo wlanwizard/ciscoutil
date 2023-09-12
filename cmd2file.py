@@ -1,6 +1,7 @@
 from netmiko import ConnectHandler
 import getpass
 import datetime
+import os
 
 # Read from a list of hostnames to connect to
 hosts = open('hosts.txt', 'r')
@@ -11,6 +12,10 @@ hosts = hosts.strip().splitlines()
 
 userName = input('Username: ')
 passWord = getpass.getpass()
+
+current_date_str = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+folder_name = current_date_str + "_output"
+os.makedirs(folder_name)  # Create a new directory with the folder name
 
 # Loop to process hosts in hosts.txt file
 for host in hosts:
@@ -36,7 +41,12 @@ for host in hosts:
     current_date_str = current_date_str.replace(":", "-") 
 
     #current_date = datetime.datetime.now().strftime("_%Y-%m-%d_%H:%M:%S")
-    file = open(host + "_" + current_date_str + '_output.txt', 'w')
+    #file = open(host + "_" + current_date_str + '_output.txt', 'w')
+
+    
+
+    file_path = os.path.join(folder_name, host + "_output.txt")
+    file = open(file_path, 'w')
 
 
     # Execute commands
