@@ -26,7 +26,8 @@ for host in hosts:
         'device_type': 'cisco_ios',
         'ip': host,
         'username': userName,
-        'password': passWord
+        'password': passWord,
+        'secret': passWord
     }
 
     # Netmiko SSH Connection Handler
