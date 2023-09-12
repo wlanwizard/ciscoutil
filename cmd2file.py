@@ -52,7 +52,8 @@ for host in hosts:
 
 
     # Execute commands
-    output = net_connect.send_command('term len 0')
+    net_connect.enable()
+    net_connect.send_command('term len 0')
     output_1 = net_connect.send_command('show run aaa')
     output_2 = net_connect.send_command('show ver')
     output_final = output_1 + output_2
