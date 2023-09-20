@@ -1,7 +1,7 @@
 import subprocess
 
 def call_tcping(ip):
-    command = f"tcping.exe {ip} 22"
+    command = f"tcping.exe -n 2 {ip} 22"
     subprocess.call(command, shell=True)
 
 def main():
