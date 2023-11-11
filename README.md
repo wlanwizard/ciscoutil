@@ -1,3 +1,3 @@
 # ciscoutil
 
-cisco backup python scripts
+various scripts to manage Cisco devices via ssh and Netmiko
