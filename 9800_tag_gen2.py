@@ -21,10 +21,3 @@ with open(file_path, "r") as file:
             for tag in tags:
              tag = tag.rstrip()
              print(tag)
-
-
-# example:
-# ap REPLACE
-# policy-tag pol_tag_leb
-# rf-tag 5ghz_mlh_draeger
-# site-tag site_tag_leb
