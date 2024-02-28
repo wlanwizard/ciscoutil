@@ -18,20 +18,35 @@ def process_text(input_text):
 
     processed_lines = []
     skip_block = False
+    skip_block2 = False
 
     for line in lines:
         # Check for the start of a block to skip
-        if "crypto" in line or line.startswith("flow "):
+        if "crypto" in line:
             skip_block = True
             continue
 
         # Check for the end of a block to skip
-        if skip_block and ("end" in line or line.strip() == "!"):
+        if skip_block and (line.strip() == "!" in line):
             skip_block = False
             continue
 
         # Skip lines if in a block to skip
         if skip_block:
+            continue
+
+        # Check for the start of a block2 to skip
+        if "telemetry" in line:
+            skip_block2 = True
+            continue
+
+        # Check for the end of a block to skip
+        if skip_block2 and (line.strip() == "!" in line):
+            skip_block2 = False
+            continue
+
+        # Skip lines if in a block to skip
+        if skip_block2:
             continue
 
         # Rule 2: Remove lines containing "attach"
@@ -52,6 +67,10 @@ def process_text(input_text):
 
         # Rule 6: Remove lines containing "snmp-server host"
         if "snmp-server host" in line:
+            continue
+
+        # Rule 7: Remove lines containing "device-tracking"
+        if "device-tracking" in line:
             continue
 
         processed_lines.append(line)
